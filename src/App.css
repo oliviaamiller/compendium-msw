@@ -9,3 +9,26 @@
     display: flex;
     justify-content: space-around;  
   }
+
+  .img {
+      width: 300px;
+  }
+
+  .list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .card {
+      margin: 10px;
+  }
+
+  .latin {
+      font-style: italic;
+  }
+
+  .animalText {
+      width: 250px;
+  }

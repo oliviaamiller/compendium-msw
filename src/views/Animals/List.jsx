@@ -20,10 +20,7 @@ export default function AnimalsList() {
   useEffect(() => {
     const getAnimals = async () => {
       const res = await fetch('https://zoo-animal-api.herokuapp.com/animals/rand/10');
-
       const results = await res.json();
-
-      console.log(results);
       const animalData = results.map((animal) => ({
         img: animal.image_link,
         name: animal.name,
@@ -40,7 +37,7 @@ export default function AnimalsList() {
 
   return (
     <>
-      <h2>AnimalsList</h2>
+      <h2>Animals List</h2>
       <div>
         <AnimalDropdown setResults={setResults} />
       </div>
@@ -48,7 +45,7 @@ export default function AnimalsList() {
         {loading ? (
           <p>loading...</p>
         ) : (
-          <div>
+          <div className={styles.list}>
             {animals.map((animal) => {
               return (
                 <AnimalCard

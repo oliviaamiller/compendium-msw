@@ -2,12 +2,14 @@ import styles from '../../App.css';
 
 export default function AnimalCard({ img, name, latin, lifespan, habitat }) {
   return (
-    <div>
+    <div className={styles.card}>
       <img className={styles.img} src={img} alt="zoo animal" />
-      <p>{name}</p>
-      <p>{latin}</p>
-      <p>{lifespan}</p>
-      <p>{habitat}</p>
+      <div className={styles.animalText}>
+        <h4>{name}</h4>
+        <p className={styles.latin}>{latin}</p>
+        <p>{`lifespan: ${lifespan} years`}</p>
+        <p>{`habitat: ${habitat}`}</p>
+      </div>
     </div>
   );
 }
