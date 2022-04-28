@@ -7,8 +7,8 @@ export default function AnimalCard({ img, name, latin, lifespan, habitat }) {
       <div className={styles.animalText}>
         <h4>{name}</h4>
         <p className={styles.latin}>{latin}</p>
-        <p>{`lifespan: ${lifespan} years`}</p>
-        <p>{`habitat: ${habitat}`}</p>
+        <p>{`Lifespan: ${lifespan} years`}</p>
+        <p>{`Habitat: ${habitat}`}</p>
       </div>
     </div>
   );
