@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function AnimalDropdown({ setResults }) {
+export default function AnimalDropdown({ sortHandler }) {
     return (
         <select
           onChange={(e) => {
-            setResults(e.target.value);
+            sortHandler(e.target.value);
           }}
         >
           <option value="all">sort by ...</option>

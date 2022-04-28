@@ -11,6 +11,9 @@ export default function AnimalsList() {
   const [sort, setSort] = useState('all');
   const [results, setResults] = useState([]);
 
+  const sortHandler = (e) => {
+    setSort(e.target.value);
+  };
 
   useEffect(() => {
     const getAnimals = async () => {
@@ -21,12 +24,24 @@ export default function AnimalsList() {
     getAnimals();
   }, []);
 
+  useEffect(() => {
+    if (value === 'abc') {
+      setResults(animals.name.sort());
+    } else if (value === 'lifespan') {
+      setResults(
+        animals.lifespan.sort(function (a, b) {
+          return a - b;
+        })
+      );
+    }
+  }, [sort]);
+
   return (
     <>
       <h2>Animals List</h2>
       <p className={styles.latin}>* refresh page for new animals!</p>
       <div>
-        <AnimalDropdown setResults={setResults} />
+        <AnimalDropdown sortHandler={sortHandler} />
       </div>
       <div>
         {loading ? (
