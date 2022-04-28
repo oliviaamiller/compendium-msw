@@ -7,8 +7,15 @@ import AnimalDropdown from '../../components/Animals/Dropdown';
 export default function AnimalsList() {
   const [animals, setAnimals] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState('');
+  const [sort, setSort] = useState('all');
   const [results, setResults] = useState([]);
+
+  const currentSort = !!sort.length;
+  const animalsList = currentSort ? results : animals;
+
+  const handleChange = (event) => {
+    setSort(event.target.value);
+  };
 
   useEffect(() => {
     const getAnimals = async () => {
@@ -30,12 +37,20 @@ export default function AnimalsList() {
     getAnimals();
   }, []);
 
-
   return (
     <>
-      <div>AnimalsList</div>
+      <h2>AnimalsList</h2>
       <div>
         <AnimalDropdown setResults={setResults} />
+      </div>
+      <div>
+        <AnimalCard
+          img={animal.img}
+          name={animal.name}
+          latin={animal.latin}
+          lifespan={animal.lifespan}
+          habitat={animal.habitat}
+        />
       </div>
     </>
   );
