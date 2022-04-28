@@ -1,7 +1,13 @@
-import React from 'react'
+import styles from '../../App.css';
 
-export default function AnimalCard() {
+export default function AnimalCard({ img, name, latin, lifespan, habitat }) {
   return (
-    <div>AnimalCard</div>
-  )
+    <div>
+      <img className={styles.img} src={img} alt="zoo animal" />
+      <p>{name}</p>
+      <p>{latin}</p>
+      <p>{lifespan}</p>
+      <p>{habitat}</p>
+    </div>
+  );
 }

@@ -10,19 +10,20 @@ export default function AnimalsList() {
   const [sort, setSort] = useState('all');
   const [results, setResults] = useState([]);
 
-  const currentSort = !!sort.length;
-  const animalsList = currentSort ? results : animals;
+//   const currentSort = !!sort.length;
+//   const animalsList = currentSort ? results : animals;
 
-  const handleChange = (event) => {
-    setSort(event.target.value);
-  };
+//   const handleChange = (event) => {
+//     setSort(event.target.value);
+//   };
 
   useEffect(() => {
     const getAnimals = async () => {
-      const res = await fetch(
-        'https://zoo-animal-api.herokuapp.com/animals/rand/10'
-      );
-      const { results } = await res.json();
+      const res = await fetch('https://zoo-animal-api.herokuapp.com/animals/rand/10');
+
+      const results = await res.json();
+
+      console.log(results);
       const animalData = results.map((animal) => ({
         img: animal.image_link,
         name: animal.name,
@@ -44,13 +45,23 @@ export default function AnimalsList() {
         <AnimalDropdown setResults={setResults} />
       </div>
       <div>
-        <AnimalCard
-          img={animal.img}
-          name={animal.name}
-          latin={animal.latin}
-          lifespan={animal.lifespan}
-          habitat={animal.habitat}
-        />
+        {loading ? (
+          <p>loading...</p>
+        ) : (
+          <div>
+            {animals.map((animal) => {
+              return (
+                <AnimalCard
+                  img={animal.img}
+                  name={animal.name}
+                  latin={animal.latin}
+                  lifespan={animal.lifespan}
+                  habitat={animal.habitat}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
     </>
   );
