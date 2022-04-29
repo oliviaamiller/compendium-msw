@@ -8,10 +8,19 @@ import { fetchAnimals } from '../../services/Animals/ApiFetch';
 export default function AnimalsList() {
   const [animals, setAnimals] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState('all');
   const [results, setResults] = useState([]);
+  const [lifespan, setLifespan] = useState([]);
 
-  const sortResults = results.length ? results : animals;
+ function sortResults() {
+     if (sort === "all") {
+         return animals;
+     } else if (sort === "abc") {
+         return results;
+     } else {
+        return lifespan;
+     }
+  }
 
   const sortHandler = (e) => {
     e.preventDefault();
@@ -32,13 +41,17 @@ export default function AnimalsList() {
       setResults(abc);
       console.log(abc);
     } else if (sort === 'lifespan') {
-      setResults(
+      setLifespan(
         animals.sort(function (a, b) {
           return a.lifespan - b.lifespan;
         })
       );
     }
   };
+
+  useEffect(() => {
+
+  }, [results]);
 
   useEffect(() => {
     const getAnimals = async () => {
@@ -61,7 +74,7 @@ export default function AnimalsList() {
           <p>loading...</p>
         ) : (
           <div className={styles.list}>
-            {sortResults.map((animal) => {
+            {sortResults().map((animal) => {
               return (
                 <AnimalCard
                   img={animal.img}
