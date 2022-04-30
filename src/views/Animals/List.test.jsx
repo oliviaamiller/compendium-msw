@@ -29,3 +29,13 @@ describe('animals list - component test', () => {
     expect(nameTest).toBeInTheDocument();
   });
 });
+
+describe('animals list - behavioral test', () => {
+    it('should sort animals by lifespan, short to long', async () => {
+        render(<ZooAnimals />)
+
+        // find the dropdown button
+        screen.getByRole('button', { name: /sort/i });
+
+    })
+})

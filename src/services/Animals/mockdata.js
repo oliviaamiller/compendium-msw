@@ -11,8 +11,7 @@ export const mockData = [
     latin: 'Uncia uncia',
     img: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Apeldoorn_Apenheul_zoo_Bonobo.jpg',
     lifespan: '14',
-    habitat:
-      'Mountain regions, including grassland, scrubland, and open woodland',
+    habitat: 'Mountain regions, including grassland, scrubland, and open woodland',
   },
   // {
   //   name: 'Bonobo',
