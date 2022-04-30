@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import AnimalDropdown from '../../components/Animals/Dropdown';
 import { fetchAnimals } from '../../services/Animals/ApiFetch';
 
-export default function AnimalsList() {
+export default function ZooAnimals() {
   const [animals, setAnimals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState('all');
@@ -76,7 +76,7 @@ export default function AnimalsList() {
           <div className={styles.list}>
             {sortResults().map((animal) => {
               return (
-                <AnimalCard
+                <AnimalCard key={animal.name}
                   img={animal.img}
                   name={animal.name}
                   latin={animal.latin}
