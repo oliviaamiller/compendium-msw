@@ -1,3 +1,10 @@
+import AnimalsList from './views/Animals/List';
+import './App.css';
+
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <div>
+      <AnimalsList />
+    </div>
+  )
 }
